@@ -6,7 +6,8 @@
 SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
 Game::Game() :
-	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle)
+	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle),
+	state_(GameState::MainMenu)
 {
 	window_.setIcon(sf::Image("Content/Textures/Icon.png"));
 	window_.setMinimumSize(window_.getSize() / 2u);
@@ -37,6 +38,7 @@ void Game::Update() {
 
 void Game::Render() {
 	window_.clear();
-	DifficultyMenu.Draw(window_);
+	MainMenu.Draw(window_);
+	//DifficultyMenu.Draw(window_);
 	window_.display();
 }

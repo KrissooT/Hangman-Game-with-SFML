@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "Input.h"
+#include "GameState.h"
+#include "MainMenu.h"
 #include "DifficultyMenu.h"
 
 class Game {
@@ -9,6 +11,8 @@ class Game {
 	private:
 		sf::RenderWindow window_;
 		Input input_;
+		GameState state_;
+		MainMenu MainMenu;
 		DifficultyMenu DifficultyMenu;
 
 	public:
