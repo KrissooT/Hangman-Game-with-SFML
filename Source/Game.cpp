@@ -1,12 +1,12 @@
 #include <SFML/GpuPreference.hpp>
 
 #include "Game.h"
-#include <iostream>
+#include "GameConfig.h"
 
 SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
 Game::Game() :
-	window_(sf::VideoMode({800,800}), "Hangman")
+	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle)
 {
 	window_.setIcon(sf::Image("Content/Textures/Icon.png"));
 	window_.setMinimumSize(window_.getSize() / 2u);

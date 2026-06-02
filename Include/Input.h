@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class Input {
+struct Input {
 	public:
 		bool HandleEvent(const sf::Event& event, char& letter);
 };
