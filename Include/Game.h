@@ -1,12 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Input.h"
 
 class Game {
 
 	private:
 		sf::RenderWindow window_;
-		sf::Image icon;
+		Input input_;
 
 	public:
 		Game();
