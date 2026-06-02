@@ -2,12 +2,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "Input.h"
+#include "DifficultyMenu.h"
 
 class Game {
 
 	private:
 		sf::RenderWindow window_;
 		Input input_;
+		DifficultyMenu DifficultyMenu;
 
 	public:
 		Game();

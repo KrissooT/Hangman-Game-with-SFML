@@ -37,5 +37,6 @@ void Game::Update() {
 
 void Game::Render() {
 	window_.clear();
+	DifficultyMenu.Draw(window_);
 	window_.display();
 }
