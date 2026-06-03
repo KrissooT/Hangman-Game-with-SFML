@@ -5,6 +5,7 @@
 #include "GameState.h"
 #include "MainMenu.h"
 #include "DifficultyMenu.h"
+#include "Difficulty.h"
 
 class Game {
 
@@ -14,6 +15,7 @@ class Game {
 		GameState state_;
 		MainMenu MainMenu;
 		DifficultyMenu DifficultyMenu;
+		Difficulty difficulty_;
 
 	public:
 		Game();

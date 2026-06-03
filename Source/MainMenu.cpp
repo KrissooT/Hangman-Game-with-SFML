@@ -40,18 +40,19 @@ MainMenu::MainMenu():
 	ExitButton.setPosition({ 400,550 });
 }
 
-int MainMenu::HandleClick(const sf::Vector2f& MousePos)
+GameState MainMenu::HandleClick(const sf::Vector2f& MousePos)
 {
-	if (PlayButton.getGlobalBounds().contains(MousePos))
-		return 0;
+	if (PlayButton.getGlobalBounds().contains(MousePos)) {
+		return GameState::DifficultyMenu;
+	}
 
-	if (OptionsButton.getGlobalBounds().contains(MousePos))
-		return 1;
+	if (OptionsButton.getGlobalBounds().contains(MousePos)) {
+		return GameState::Options;
+	}
 
-	if (ExitButton.getGlobalBounds().contains(MousePos))
-		return 2;
-
-	return -1;
+	if (ExitButton.getGlobalBounds().contains(MousePos)) {
+		return GameState::Exit;
+	}
 }
 
 void MainMenu::UpdateHover(const sf::Vector2f& MousePos) {

@@ -50,21 +50,23 @@ DifficultyMenu::DifficultyMenu() :
 	ExtremeButton.setPosition({400,620});
 }
 
-int DifficultyMenu::HandleClick(const sf::Vector2f& mousePos)
+Difficulty DifficultyMenu::HandleClick(const sf::Vector2f& mousePos)
 {
-	if (EasyButton.getGlobalBounds().contains(mousePos))
-		return 0;
+	if (EasyButton.getGlobalBounds().contains(mousePos)) {
+		return Difficulty::Easy;
+	}
 
-	if (MediumButton.getGlobalBounds().contains(mousePos))
-		return 1;
+	if (MediumButton.getGlobalBounds().contains(mousePos)) {
+		return Difficulty::Medium;
+	}
 
-	if (HardButton.getGlobalBounds().contains(mousePos))
-		return 2;
+	if (HardButton.getGlobalBounds().contains(mousePos)) {
+		return Difficulty::Hard;
+	}
 
-	if (ExtremeButton.getGlobalBounds().contains(mousePos))
-		return 3;
-
-	return -1;
+	if (ExtremeButton.getGlobalBounds().contains(mousePos)) {
+		return Difficulty::Extreme;
+	}
 }
 
 void DifficultyMenu::UpdateHover(const sf::Vector2f& MousePos) {

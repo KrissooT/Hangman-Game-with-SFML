@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "GameState.h"
+
 class MainMenu {
 	private:
 
@@ -16,7 +18,7 @@ class MainMenu {
 
 		MainMenu();
 
-		int HandleClick(const sf::Vector2f& MousePos);
+		GameState HandleClick(const sf::Vector2f& MousePos);
 		void UpdateHover(const sf::Vector2f& MousePos);
 		void Draw(sf::RenderWindow& window)const;
 };

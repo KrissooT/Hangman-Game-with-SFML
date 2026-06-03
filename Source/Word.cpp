@@ -37,6 +37,11 @@ void Word::RandomWord(Difficulty difficulty) {
 	std::uniform_int_distribution<> dist(0, words_.size() - 1);
 
 	word_ = words_[dist(gen)];
+
+	for (int i = 0; i <= word_.size() - 1; i++) {
+		word_[i] = std::toupper(word_[i]);
+	}
+
 }
 
 std::string Word::GetWord()const {

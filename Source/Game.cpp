@@ -7,7 +7,8 @@ SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
 Game::Game() :
 	window_(sf::VideoMode(sf::Vector2u(gConfig.windowSize)), gConfig.windowTitle),
-	state_(GameState::MainMenu)
+	state_(GameState::MainMenu),
+	difficulty_(Difficulty::None)
 {
 	window_.setIcon(sf::Image("Content/Textures/Icon.png"));
 	window_.setMinimumSize(window_.getSize() / 2u);
@@ -34,15 +35,31 @@ void Game::ProcessEvents() {
 
 void Game::Update() {
 	input_.Update(window_);
-	MainMenu.UpdateHover(input_.GetMousePos());
-	DifficultyMenu.UpdateHover(input_.GetMousePos());
+
+	switch (state_) {
+	case GameState::MainMenu:
+		MainMenu.UpdateHover(input_.GetMousePos());
+		break;
+	case GameState::DifficultyMenu:
+		DifficultyMenu.UpdateHover(input_.GetMousePos());
+		break;
+	}
+
 	if (input_.IsLeftMouseClicked()) {
-		int action = MainMenu.HandleClick(input_.GetMousePos());
-		if (action == 0) {
-			state_ = GameState::DifficultyMenu;
+		if (state_ == GameState::MainMenu) {
+			GameState nextState = MainMenu.HandleClick(input_.GetMousePos());
+			if (nextState == GameState::Exit) {
+				window_.close();
+			}
+			else {
+				state_ = nextState;
+			}
 		}
-		if (action == 2) {
-			window_.close();
+		if (state_ == GameState::DifficultyMenu) {
+			difficulty_ = DifficultyMenu.HandleClick(input_.GetMousePos());
+			if (difficulty_ != Difficulty::None) {
+				state_ = GameState::Playing;
+			}
 		}
 	}
 }
@@ -50,11 +67,22 @@ void Game::Update() {
 void Game::Render() {
 	window_.clear();
 
-	if (state_ == GameState::MainMenu) {
+	switch (state_) {
+	case GameState::MainMenu:
 		MainMenu.Draw(window_);
-	}
-	if (state_ == GameState::DifficultyMenu) {
+		break;
+	case GameState::DifficultyMenu:
 		DifficultyMenu.Draw(window_);
+		break;
+	case GameState::Options:
+		//Just for now TODO!
+		window_.clear(sf::Color::Blue);
+		break;
+	case GameState::Playing:
+		//Just for now TODO!
+		window_.clear(sf::Color::Red);
+		break;
 	}
+
 	window_.display();
 }

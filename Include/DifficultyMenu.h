@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Difficulty.h"
+
 class DifficultyMenu {
 
 	private:
@@ -17,7 +19,7 @@ class DifficultyMenu {
 
 		DifficultyMenu();
 
-		int HandleClick(const sf::Vector2f& MousePos);
+		Difficulty HandleClick(const sf::Vector2f& MousePos);
 		void UpdateHover(const sf::Vector2f& MousePos);
 		void Draw(sf::RenderWindow& window)const;
 };

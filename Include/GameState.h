@@ -4,5 +4,6 @@ enum class GameState {
 	MainMenu,
 	DifficultyMenu,
 	Options,
-	Playing
+	Playing,
+	Exit
 };
