@@ -13,3 +13,15 @@ cmake-build-*/
 
 # Executables
 *.exe
+
+# Debug
+*.pdb
+*.ilk
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/

@@ -4,8 +4,10 @@
 
 struct Input {
 	public:
+		//Keyboard
 		bool HandleEvent(const sf::Event& event, char& letter);
 
+		//Mouse
 		void Update(const sf::RenderWindow& window);
 		bool IsLeftMouseClicked()const;
 		sf::Vector2f GetMousePos()const;
