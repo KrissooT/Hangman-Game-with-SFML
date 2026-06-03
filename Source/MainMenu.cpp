@@ -40,18 +40,51 @@ MainMenu::MainMenu():
 	ExitButton.setPosition({ 400,550 });
 }
 
-int MainMenu::HandleClick(const sf::Vector2f& mousePos)
+int MainMenu::HandleClick(const sf::Vector2f& MousePos)
 {
-	if (PlayButton.getGlobalBounds().contains(mousePos))
+	if (PlayButton.getGlobalBounds().contains(MousePos))
 		return 0;
 
-	if (OptionsButton.getGlobalBounds().contains(mousePos))
+	if (OptionsButton.getGlobalBounds().contains(MousePos))
 		return 1;
 
-	if (ExitButton.getGlobalBounds().contains(mousePos))
+	if (ExitButton.getGlobalBounds().contains(MousePos))
 		return 2;
 
 	return -1;
+}
+
+void MainMenu::UpdateHover(const sf::Vector2f& MousePos) {
+	
+	//PlayButton
+	if (PlayButton.getGlobalBounds().contains(MousePos)) {
+		PlayButton.setFillColor(sf::Color::Red);
+		PlayButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		PlayButton.setFillColor(sf::Color::Green);
+		PlayButton.setStyle(sf::Text::Style::Regular);
+	}
+
+	//OptionsButton
+	if (OptionsButton.getGlobalBounds().contains(MousePos)) {
+		OptionsButton.setFillColor(sf::Color::Red);
+		OptionsButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		OptionsButton.setFillColor(sf::Color::Green);
+		OptionsButton.setStyle(sf::Text::Style::Regular);
+	}
+
+	//ExitButton
+	if (ExitButton.getGlobalBounds().contains(MousePos)) {
+		ExitButton.setFillColor(sf::Color::Red);
+		ExitButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		ExitButton.setFillColor(sf::Color::Green);
+		ExitButton.setStyle(sf::Text::Style::Regular);
+	}
 }
 
 void MainMenu::Draw(sf::RenderWindow& window)const {

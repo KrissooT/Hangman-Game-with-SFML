@@ -1,5 +1,7 @@
 #include "Input.h"
 
+#include <iostream>
+
 bool Input::HandleEvent(const sf::Event& event, char& letter){
 
 	if (auto * keyPressed = event.getIf<sf::Event::KeyPressed>()) {
@@ -36,4 +38,23 @@ bool Input::HandleEvent(const sf::Event& event, char& letter){
 		}
 	}
 	return false;
+}
+
+void Input::Update(const sf::RenderWindow& window) {
+	sf::Vector2i pixels = sf::Mouse::getPosition(window);
+	MousePos = window.mapPixelToCoords(pixels);
+
+
+	bool currentPressed = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+
+	leftClicked_ = (currentPressed && !leftPressed_);
+	leftPressed_ = currentPressed;
+}
+
+sf::Vector2f Input::GetMousePos()const{
+	return MousePos;
+}
+
+bool Input::IsLeftMouseClicked()const {
+	return leftClicked_;
 }

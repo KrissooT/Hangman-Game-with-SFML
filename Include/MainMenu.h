@@ -16,6 +16,7 @@ class MainMenu {
 
 		MainMenu();
 
-		int HandleClick(const sf::Vector2f& mousePos);
+		int HandleClick(const sf::Vector2f& MousePos);
+		void UpdateHover(const sf::Vector2f& MousePos);
 		void Draw(sf::RenderWindow& window)const;
 };

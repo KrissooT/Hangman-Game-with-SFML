@@ -33,12 +33,28 @@ void Game::ProcessEvents() {
 }
 
 void Game::Update() {
-	//TODO
+	input_.Update(window_);
+	MainMenu.UpdateHover(input_.GetMousePos());
+	DifficultyMenu.UpdateHover(input_.GetMousePos());
+	if (input_.IsLeftMouseClicked()) {
+		int action = MainMenu.HandleClick(input_.GetMousePos());
+		if (action == 0) {
+			state_ = GameState::DifficultyMenu;
+		}
+		if (action == 2) {
+			window_.close();
+		}
+	}
 }
 
 void Game::Render() {
 	window_.clear();
-	MainMenu.Draw(window_);
-	//DifficultyMenu.Draw(window_);
+
+	if (state_ == GameState::MainMenu) {
+		MainMenu.Draw(window_);
+	}
+	if (state_ == GameState::DifficultyMenu) {
+		DifficultyMenu.Draw(window_);
+	}
 	window_.display();
 }

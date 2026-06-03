@@ -14,7 +14,7 @@ DifficultyMenu::DifficultyMenu() :
 	ChooseDifficultyText.setFillColor(sf::Color::Red);
 
 	ChooseDifficultyText.setOrigin(ChooseDifficultyText.getGlobalBounds().getCenter());
-	ChooseDifficultyText.setPosition({ 400,100 });
+	ChooseDifficultyText.setPosition({ 400,50 });
 
 
 	//EasyButton
@@ -23,7 +23,7 @@ DifficultyMenu::DifficultyMenu() :
 	EasyButton.setFillColor(sf::Color::Green);
 
 	EasyButton.setOrigin(EasyButton.getGlobalBounds().getCenter());
-	EasyButton.setPosition({ 400,300 });
+	EasyButton.setPosition({ 400,170 });
 
 	//MediumButton
 	MediumButton.setString("Medium");
@@ -31,7 +31,7 @@ DifficultyMenu::DifficultyMenu() :
 	MediumButton.setFillColor(sf::Color::Green);
 
 	MediumButton.setOrigin(MediumButton.getGlobalBounds().getCenter());
-	MediumButton.setPosition({ 400,400 });
+	MediumButton.setPosition({ 400,320 });
 
 	//HardButton
 	HardButton.setString("Hard");
@@ -39,7 +39,7 @@ DifficultyMenu::DifficultyMenu() :
 	HardButton.setFillColor(sf::Color::Green);
 
 	HardButton.setOrigin(HardButton.getGlobalBounds().getCenter());
-	HardButton.setPosition({ 400,500 });
+	HardButton.setPosition({ 400,470 });
 
 	//ExtremeButton
 	ExtremeButton.setString("Extreme");
@@ -47,7 +47,7 @@ DifficultyMenu::DifficultyMenu() :
 	ExtremeButton.setFillColor(sf::Color::Green);
 	
 	ExtremeButton.setOrigin(ExtremeButton.getGlobalBounds().getCenter());
-	ExtremeButton.setPosition({400,600});
+	ExtremeButton.setPosition({400,620});
 }
 
 int DifficultyMenu::HandleClick(const sf::Vector2f& mousePos)
@@ -65,6 +65,49 @@ int DifficultyMenu::HandleClick(const sf::Vector2f& mousePos)
 		return 3;
 
 	return -1;
+}
+
+void DifficultyMenu::UpdateHover(const sf::Vector2f& MousePos) {
+	
+	//EasyButton
+	if (EasyButton.getGlobalBounds().contains(MousePos)) {
+		EasyButton.setFillColor(sf::Color::Red);
+		EasyButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		EasyButton.setFillColor(sf::Color::Green);
+		EasyButton.setStyle(sf::Text::Style::Regular);
+	}
+
+	//MediumButton
+	if (MediumButton.getGlobalBounds().contains(MousePos)) {
+		MediumButton.setFillColor(sf::Color::Red);
+		MediumButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		MediumButton.setFillColor(sf::Color::Green);
+		MediumButton.setStyle(sf::Text::Style::Regular);
+	}
+
+	//HardButton
+	if (HardButton.getGlobalBounds().contains(MousePos)) {
+		HardButton.setFillColor(sf::Color::Red);
+		HardButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		HardButton.setFillColor(sf::Color::Green);
+		HardButton.setStyle(sf::Text::Style::Regular);
+	}
+
+	//ExtremeButton
+	if (ExtremeButton.getGlobalBounds().contains(MousePos)) {
+		ExtremeButton.setFillColor(sf::Color::Red);
+		ExtremeButton.setStyle(sf::Text::Style::Bold | sf::Text::Style::Underlined);
+	}
+	else {
+		ExtremeButton.setFillColor(sf::Color::Green);
+		ExtremeButton.setStyle(sf::Text::Style::Regular);
+	}
 }
 
 void DifficultyMenu::Draw(sf::RenderWindow& window)const {
