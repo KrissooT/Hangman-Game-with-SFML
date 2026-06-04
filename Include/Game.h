@@ -6,6 +6,7 @@
 #include "MainMenu.h"
 #include "DifficultyMenu.h"
 #include "Difficulty.h"
+#include "Hangman.h"
 
 class Game {
 
@@ -16,6 +17,7 @@ class Game {
 		MainMenu MainMenu;
 		DifficultyMenu DifficultyMenu;
 		Difficulty difficulty_;
+		Hangman hangman_;
 
 	public:
 		Game();

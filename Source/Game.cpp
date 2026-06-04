@@ -59,6 +59,7 @@ void Game::Update() {
 			difficulty_ = DifficultyMenu.HandleClick(input_.GetMousePos());
 			if (difficulty_ != Difficulty::None) {
 				state_ = GameState::Playing;
+				hangman_.Run(difficulty_);
 			}
 		}
 	}

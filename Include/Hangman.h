@@ -1,0 +1,26 @@
+#pragma once
+
+#include <string>
+#include <unordered_set>
+
+#include "GameState.h"
+#include "Word.h"
+#include "Difficulty.h"
+
+class Hangman {
+	private:
+		Word word;
+		Difficulty difficulty;
+		std::string secretWord;
+		std::string maskedWord;
+		std::unordered_set<char> guessedLetters;
+		int lives;
+
+	public:
+
+		Hangman(){}
+
+		int RandomLetter(int& secondIndex);
+		void Run(Difficulty difficulty);
+		bool GuessLetter(char letter);
+};
