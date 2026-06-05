@@ -14,7 +14,7 @@ class Hangman {
 		std::string secretWord;
 		std::string maskedWord;
 		std::unordered_set<char> guessedLetters;
-		int lives;
+		int lives = 6;
 
 	public:
 
@@ -23,4 +23,7 @@ class Hangman {
 		int RandomLetter(int& secondIndex);
 		void Run(Difficulty difficulty);
 		bool GuessLetter(char letter);
+
+		int GetLives()const;
+		const std::string& GetMaskedWord()const;
 };

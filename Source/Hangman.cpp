@@ -6,6 +6,10 @@
 
 bool Hangman::GuessLetter(char letter) {
 
+	if (guessedLetters.count(letter) != 0) {
+		return false;
+	}
+
 	bool found = false;
 
 	for (int i = 0; i < secretWord.size(); i++) {
@@ -16,9 +20,11 @@ bool Hangman::GuessLetter(char letter) {
 	}
 
 	if (!found) {
-		guessedLetters.insert(letter);
 		lives--;
 	}
+
+	guessedLetters.insert(letter);
+
 	return found;
 }
 
@@ -107,6 +113,22 @@ void Hangman::Run(Difficulty difficulty) {
 			maskedWord[i] = '_';
 		}
 	}
-	//std::cout << secretWord << "\n";  Just for testing
+
+	std::string spaced;
+	for (char c : maskedWord) {
+		spaced += c;
+		spaced += ' ';
+	}
+	maskedWord = spaced;
+
+	//std::cout << secretWord << "\n";  //Just for testing
 	//std::cout << maskedWord;
+}
+
+int Hangman::GetLives()const {
+	return lives;
+}
+
+const std::string& Hangman::GetMaskedWord()const {
+	return maskedWord;
 }

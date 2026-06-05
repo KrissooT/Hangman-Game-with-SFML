@@ -2,6 +2,7 @@
 
 #include "Game.h"
 #include "GameConfig.h"
+#include "iostream"
 
 SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
@@ -29,6 +30,9 @@ void Game::ProcessEvents() {
 		char letter;
 		if (input_.HandleEvent(*event, letter)) {
 			//TODO
+			if (state_ == GameState::Playing) {
+				hangman_.GuessLetter(letter);
+			}
 		}
 	}
 }
@@ -80,8 +84,7 @@ void Game::Render() {
 		window_.clear(sf::Color::Blue);
 		break;
 	case GameState::Playing:
-		//Just for now TODO!
-		window_.clear(sf::Color::Red);
+		PlayScreen.Draw(window_, hangman_);
 		break;
 	}
 
