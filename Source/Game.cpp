@@ -32,6 +32,7 @@ void Game::ProcessEvents() {
 			//TODO
 			if (state_ == GameState::Playing) {
 				hangman_.GuessLetter(letter);
+				state_ = hangman_.CheckLives();
 			}
 		}
 	}
@@ -46,6 +47,10 @@ void Game::Update() {
 		break;
 	case GameState::DifficultyMenu:
 		DifficultyMenu.UpdateHover(input_.GetMousePos());
+		break;
+	case GameState::Won:
+	case GameState::Lost:
+		PlayAgainMenu.UpdateHover(input_.GetMousePos());
 		break;
 	}
 
@@ -64,6 +69,15 @@ void Game::Update() {
 			if (difficulty_ != Difficulty::None) {
 				state_ = GameState::Playing;
 				hangman_.Run(difficulty_);
+			}
+		}
+		if (state_ == GameState::Won || state_ == GameState::Lost) {
+			GameState nextState = PlayAgainMenu.HandleClick(input_.GetMousePos());
+			if (nextState == GameState::Exit) {
+				window_.close();
+			}
+			else {
+				state_ = nextState;
 			}
 		}
 	}
@@ -85,6 +99,10 @@ void Game::Render() {
 		break;
 	case GameState::Playing:
 		PlayScreen.Draw(window_, hangman_);
+		break;
+	case GameState::Won:
+	case GameState::Lost:
+		PlayAgainMenu.Draw(window_, state_, hangman_.GetSecretWord());
 		break;
 	}
 

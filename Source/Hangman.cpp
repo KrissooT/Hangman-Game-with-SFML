@@ -1,11 +1,11 @@
 #include <set>
 #include <unordered_map>
-//#include <iostream>
+#include <iostream>
 
 #include "Hangman.h"
 
 bool Hangman::GuessLetter(char letter) {
-
+	std::cout << "Guessing: " << letter << "\n";
 	if (guessedLetters.count(letter) != 0) {
 		return false;
 	}
@@ -114,15 +114,21 @@ void Hangman::Run(Difficulty difficulty) {
 		}
 	}
 
-	std::string spaced;
-	for (char c : maskedWord) {
-		spaced += c;
-		spaced += ' ';
-	}
-	maskedWord = spaced;
-
 	//std::cout << secretWord << "\n";  //Just for testing
 	//std::cout << maskedWord;
+}
+
+GameState Hangman::CheckLives() {
+	if (lives <= 0) {
+		lives = 0;
+		return GameState::Lost;
+	}
+	else if (maskedWord == secretWord) {
+		return GameState::Won;
+	}
+	else {
+		return GameState::Playing;
+	}
 }
 
 int Hangman::GetLives()const {
@@ -131,4 +137,8 @@ int Hangman::GetLives()const {
 
 const std::string& Hangman::GetMaskedWord()const {
 	return maskedWord;
+}
+
+const std::string& Hangman::GetSecretWord()const {
+	return secretWord;
 }

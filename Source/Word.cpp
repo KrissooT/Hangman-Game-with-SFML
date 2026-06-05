@@ -44,6 +44,6 @@ void Word::RandomWord(Difficulty difficulty) {
 
 }
 
-std::string Word::GetWord()const {
+const std::string& Word::GetWord()const {
 	return word_;
 }

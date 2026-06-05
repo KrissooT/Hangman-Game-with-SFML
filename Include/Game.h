@@ -8,6 +8,7 @@
 #include "Difficulty.h"
 #include "Hangman.h"
 #include "PlayScreen.h"
+#include "PlayAgainMenu.h"
 
 class Game {
 
@@ -20,6 +21,7 @@ class Game {
 		Difficulty difficulty_;
 		Hangman hangman_;
 		PlayScreen PlayScreen;
+		PlayAgainMenu PlayAgainMenu;
 
 	public:
 		Game();

@@ -13,5 +13,5 @@ class Word {
 
 		Word();
 		void RandomWord(Difficulty difficulty);
-		std::string GetWord()const;
+		const std::string& GetWord()const;
 };

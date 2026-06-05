@@ -4,6 +4,20 @@
 
 bool Input::HandleEvent(const sf::Event& event, char& letter){
 
+	//if (const auto* text = event.getIf<sf::Event::TextEntered>()) {
+
+	//	if (text->unicode < 128) { // ASCII only
+	//		char c = static_cast<char>(text->unicode);
+
+	//		if (std::isalpha(c)) {
+	//			letter = static_cast<char>(std::toupper(c));
+	//			return true;
+	//		}
+	//	}
+	//}
+
+	//return false;
+
 	if (auto * keyPressed = event.getIf<sf::Event::KeyPressed>()) {
 		sf::Keyboard::Key key = keyPressed->code;
 

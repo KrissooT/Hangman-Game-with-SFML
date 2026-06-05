@@ -1,5 +1,8 @@
 # Visual Studio
 .vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.sln.docstates
 
 # Build folders
 /build/
@@ -10,6 +13,7 @@
 CMakeFiles/
 CMakeCache.txt
 cmake-build-*/
+CMakeUserPresets.json
 
 # Executables
 *.exe
@@ -18,6 +22,16 @@ cmake-build-*/
 *.pdb
 *.ilk
 *.log
+
+# Compiler
+*.obj
+*.o
+*.lib
+*.dll
+
+# Temp
+*.tmp
+*.cache
 
 # OS
 .DS_Store
