@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Difficulty.h"
+#include "GameState.h"
 
 class DifficultyMenu {
 
@@ -14,12 +15,14 @@ class DifficultyMenu {
 		sf::Text MediumButton;
 		sf::Text HardButton;
 		sf::Text ExtremeButton;
+		sf::Text BackButton;
 
 	public:
 
 		DifficultyMenu();
 
 		Difficulty HandleClick(const sf::Vector2f& MousePos);
+		GameState Back(const sf::Vector2f& MousePos);
 		void UpdateHover(const sf::Vector2f& MousePos);
 		void Draw(sf::RenderWindow& window)const;
 };

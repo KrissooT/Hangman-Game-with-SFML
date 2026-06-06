@@ -65,6 +65,15 @@ void Game::Update() {
 			}
 		}
 		if (state_ == GameState::DifficultyMenu) {
+
+			// GO BACK TO MAIN MENU
+			GameState backState = DifficultyMenu.Back(input_.GetMousePos());
+			if (backState == GameState::MainMenu) {
+				state_ = backState;
+				return;
+			}
+
+			//CHOOSE A DIFFICULTY
 			difficulty_ = DifficultyMenu.HandleClick(input_.GetMousePos());
 			if (difficulty_ != Difficulty::None) {
 				state_ = GameState::Playing;
