@@ -1,11 +1,12 @@
 #include <set>
 #include <unordered_map>
-#include <iostream>
+#include<random>
+//#include <iostream>
 
 #include "Hangman.h"
 
 bool Hangman::GuessLetter(char letter) {
-	std::cout << "Guessing: " << letter << "\n";
+	//std::cout << "Guessing: " << letter << "\n"; For testing
 	if (guessedLetters.count(letter) != 0) {
 		return false;
 	}
@@ -72,12 +73,15 @@ int Hangman::RandomLetter(int& secondIndex) {
 			}
 		}
 
-		firstIndex = std::rand() % validIndexes.size();
-		secondIndex = std::rand() % validIndexes.size();
-		if (firstIndex == secondIndex) {
-			while (firstIndex == secondIndex) {
-				secondIndex = std::rand() % validIndexes.size();
-			}
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> dist(0, validIndexes.size() - 1);
+
+		firstIndex = dist(gen);
+		secondIndex = dist(gen);
+
+		while (firstIndex == secondIndex) {
+			secondIndex = dist(gen);
 		}
 
 		firstIndex = validIndexes[firstIndex];
@@ -94,10 +98,16 @@ int Hangman::RandomLetter(int& secondIndex) {
 	return firstIndex;
 }
 
-void Hangman::Run(Difficulty difficulty) {
-
+void Hangman::Reset() {
 	guessedLetters.clear();
 	lives = 6;
+	secretWord.clear();
+	maskedWord.clear();
+}
+
+void Hangman::Run(Difficulty difficulty) {
+
+	Reset();
 
 	word.RandomWord(difficulty);
 	secretWord = word.GetWord();

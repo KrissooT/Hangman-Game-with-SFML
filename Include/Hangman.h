@@ -20,6 +20,8 @@ class Hangman {
 
 		Hangman(){}
 
+		void Reset();
+
 		int RandomLetter(int& secondIndex);
 		void Run(Difficulty difficulty);
 		bool GuessLetter(char letter);

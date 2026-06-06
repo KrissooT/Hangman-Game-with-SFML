@@ -6,7 +6,7 @@ bool Input::HandleEvent(const sf::Event& event, char& letter){
 
 	//if (const auto* text = event.getIf<sf::Event::TextEntered>()) {
 
-	//	if (text->unicode < 128) { // ASCII only
+	//	if (text->unicode < 128) {
 	//		char c = static_cast<char>(text->unicode);
 
 	//		if (std::isalpha(c)) {
