@@ -11,7 +11,7 @@ Game::Game() :
 	state_(GameState::MainMenu),
 	difficulty_(Difficulty::None)
 {
-	window_.setIcon(sf::Image("Content/Textures/Icon.png"));
+	window_.setIcon(sf::Image("Content/Textures/IconTest.png"));
 	window_.setMinimumSize(window_.getSize() / 2u);
 
 	window_.setKeyRepeatEnabled(false);
@@ -108,6 +108,7 @@ void Game::Render() {
 		break;
 	case GameState::Playing:
 		PlayScreen.Draw(window_, hangman_);
+		drawHangman_.Draw(window_, hangman_.GetLives());
 		break;
 	case GameState::Won:
 	case GameState::Lost:

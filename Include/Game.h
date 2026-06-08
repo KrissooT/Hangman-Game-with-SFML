@@ -9,6 +9,7 @@
 #include "Hangman.h"
 #include "PlayScreen.h"
 #include "PlayAgainMenu.h"
+#include "DrawHangman.h"
 
 class Game {
 
@@ -22,6 +23,7 @@ class Game {
 		Hangman hangman_;
 		PlayScreen PlayScreen;
 		PlayAgainMenu PlayAgainMenu;
+		DrawHangman drawHangman_;
 
 	public:
 		Game();

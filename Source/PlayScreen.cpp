@@ -3,7 +3,9 @@
 PlayScreen::PlayScreen() :
 	font_("Content/Fonts/Font.ttf"),
 	word_(font_),
-	lives_(font_)
+	lives_(font_),
+	backgroundTex_("Content/Textures/PlayScreenBackground.png"),
+	backgroundSpr_(backgroundTex_)
 {
 	//Word
 	word_.setCharacterSize(50);
@@ -13,9 +15,15 @@ PlayScreen::PlayScreen() :
 
 	lives_.setOrigin(lives_.getGlobalBounds().getCenter());
 	lives_.setPosition({ 5, 5 });
+
+	auto backgroundSize = backgroundTex_.getSize();
+	backgroundSpr_.setScale({ 1000.f / backgroundSize.x, 800.f / backgroundSize.y });
+
 }
 
 void PlayScreen::Draw(sf::RenderWindow& window,const Hangman& hangman){
+
+	drawHangman_.Draw(window, hangman.GetLives());
 
 	std::string spaced;
 	for (char c : hangman.GetMaskedWord()) {
@@ -30,7 +38,7 @@ void PlayScreen::Draw(sf::RenderWindow& window,const Hangman& hangman){
 
 	lives_.setString("Lives: " + std::to_string(hangman.GetLives()));
 
+	window.draw(backgroundSpr_);
 	window.draw(word_);
-
 	window.draw(lives_);
 }
