@@ -152,3 +152,7 @@ const std::string& Hangman::GetMaskedWord()const {
 const std::string& Hangman::GetSecretWord()const {
 	return secretWord;
 }
+
+std::unordered_set<char> Hangman::GetGuessedLetters()const {
+	return guessedLetters;
+}

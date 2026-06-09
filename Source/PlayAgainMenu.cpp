@@ -13,7 +13,7 @@ PlayAgainMenu::PlayAgainMenu() :
 	playAgainButton.setFillColor(sf::Color::Green);
 
 	playAgainButton.setOrigin(playAgainButton.getGlobalBounds().getCenter());
-	playAgainButton.setPosition({ 400,400 });
+	playAgainButton.setPosition({ gConfig.windowSize.x / 2, gConfig.windowSize.y / 2 });
 
 	//Exit Button
 	exitButton.setString("Exit");
@@ -21,7 +21,7 @@ PlayAgainMenu::PlayAgainMenu() :
 	exitButton.setFillColor(sf::Color::Green);
 
 	exitButton.setOrigin(exitButton.getGlobalBounds().getCenter());
-	exitButton.setPosition({ 400, 500 });
+	exitButton.setPosition({ gConfig.windowSize.x / 2, 500 });
 }
 
 GameState PlayAgainMenu::HandleClick(const sf::Vector2f& mousePos)const {
@@ -67,7 +67,7 @@ void PlayAgainMenu::Draw(sf::RenderWindow& window, GameState state, const std::s
 
 		sf::FloatRect won = message_.getLocalBounds();
 		message_.setOrigin({ won.size.x / 2.f, won.size.y / 2.f });
-		message_.setPosition({ 400,200 });
+		message_.setPosition({ gConfig.windowSize.x / 2 ,200 });
 	}
 	else {
 		message_.setString("You lost!");
@@ -76,7 +76,7 @@ void PlayAgainMenu::Draw(sf::RenderWindow& window, GameState state, const std::s
 
 		sf::FloatRect lost = message_.getLocalBounds();
 		message_.setOrigin({ lost.size.x / 2.f, lost.size.y / 2.f });
-		message_.setPosition({ 400,200 });
+		message_.setPosition({ gConfig.windowSize.x / 2, 200 });
 	}
 
 	//The word was
@@ -86,7 +86,7 @@ void PlayAgainMenu::Draw(sf::RenderWindow& window, GameState state, const std::s
 
 	sf::FloatRect word = wordWas_.getLocalBounds();
 	wordWas_.setOrigin({ word.size.x / 2.f, word.size.y / 2.f });
-	wordWas_.setPosition({ 400, 300 });
+	wordWas_.setPosition({ gConfig.windowSize.x / 2, 300 });
 
 	window.draw(message_);
 	window.draw(wordWas_);

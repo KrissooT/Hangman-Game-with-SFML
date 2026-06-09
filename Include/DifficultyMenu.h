@@ -4,6 +4,7 @@
 
 #include "Difficulty.h"
 #include "GameState.h"
+#include "GameConfig.h"
 
 class DifficultyMenu {
 

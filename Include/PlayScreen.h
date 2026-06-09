@@ -1,8 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include "Hangman.h"
 #include "DrawHangman.h"
+#include "GameConfig.h"
 
 class PlayScreen {
 
@@ -23,6 +25,7 @@ class PlayScreen {
 
 		PlayScreen();
 
+		void DrawKeyboard(sf::RenderWindow& window, const Hangman& hangman);
 		void Draw(sf::RenderWindow& window,const Hangman& hangman);
 
 };

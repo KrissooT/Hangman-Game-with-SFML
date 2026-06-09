@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameState.h"
+#include "GameConfig.h"
 
 class MainMenu {
 	private:
@@ -14,6 +15,8 @@ class MainMenu {
 		sf::Text OptionsButton;
 		sf::Text ExitButton;
 
+		sf::Texture backgroundTex_;
+		sf::Sprite backgroundSpr_;
 	public:
 
 		MainMenu();

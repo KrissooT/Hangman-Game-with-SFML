@@ -25,6 +25,8 @@ void DrawHangman::Draw(sf::RenderWindow& window, int lives)
 	auto bounds = sprite_.getLocalBounds();
 	sprite_.setOrigin({ bounds.size.x / 2.f, bounds.size.y / 2.f });
 
+	sprite_.setTexture(emptyTexture_);  //Resets the drawing
+
 	if (lives == 1) {
 		//Head
 		sprite_.setTexture(head_);

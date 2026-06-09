@@ -29,6 +29,7 @@ class Hangman {
 		int GetLives()const;
 		const std::string& GetMaskedWord()const;
 		const std::string& GetSecretWord()const;
+		std::unordered_set<char> GetGuessedLetters()const;
 
 		GameState CheckLives();
 };

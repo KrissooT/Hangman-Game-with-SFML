@@ -15,7 +15,7 @@ DifficultyMenu::DifficultyMenu() :
 	ChooseDifficultyText.setFillColor(sf::Color::Red);
 
 	ChooseDifficultyText.setOrigin(ChooseDifficultyText.getGlobalBounds().getCenter());
-	ChooseDifficultyText.setPosition({ 400,50 });
+	ChooseDifficultyText.setPosition({ gConfig.windowSize.x / 2, 50 });
 
 
 	//Easy Button
@@ -24,7 +24,7 @@ DifficultyMenu::DifficultyMenu() :
 	EasyButton.setFillColor(sf::Color::Green);
 
 	EasyButton.setOrigin(EasyButton.getGlobalBounds().getCenter());
-	EasyButton.setPosition({ 400,170 });
+	EasyButton.setPosition({ gConfig.windowSize.x / 2, 170 });
 
 	//MediumButton
 	MediumButton.setString("Medium");
@@ -32,7 +32,7 @@ DifficultyMenu::DifficultyMenu() :
 	MediumButton.setFillColor(sf::Color::Green);
 
 	MediumButton.setOrigin(MediumButton.getGlobalBounds().getCenter());
-	MediumButton.setPosition({ 400,320 });
+	MediumButton.setPosition({ gConfig.windowSize.x / 2, 320 });
 
 	//Hard Button
 	HardButton.setString("Hard");
@@ -40,7 +40,7 @@ DifficultyMenu::DifficultyMenu() :
 	HardButton.setFillColor(sf::Color::Green);
 
 	HardButton.setOrigin(HardButton.getGlobalBounds().getCenter());
-	HardButton.setPosition({ 400,470 });
+	HardButton.setPosition({ gConfig.windowSize.x / 2, 470 });
 
 	//Extreme Button
 	ExtremeButton.setString("Extreme");
@@ -48,15 +48,18 @@ DifficultyMenu::DifficultyMenu() :
 	ExtremeButton.setFillColor(sf::Color::Green);
 	
 	ExtremeButton.setOrigin(ExtremeButton.getGlobalBounds().getCenter());
-	ExtremeButton.setPosition({400,620});
+	ExtremeButton.setPosition({ gConfig.windowSize.x / 2, 620});
 
 	//Back Button
+	float BackButtonX = (gConfig.windowSize.x - gConfig.windowSize.x) + 100;
+	float BackButtonY = gConfig.windowSize.y - 100;
+
 	BackButton.setString("Back");
 	BackButton.setCharacterSize(50);
 	BackButton.setFillColor(sf::Color::Green);
 
 	BackButton.setOrigin(BackButton.getGlobalBounds().getCenter());
-	BackButton.setPosition({ 100,700 });
+	BackButton.setPosition({ BackButtonX, BackButtonY });
 }
 
 Difficulty DifficultyMenu::HandleClick(const sf::Vector2f& MousePos)
