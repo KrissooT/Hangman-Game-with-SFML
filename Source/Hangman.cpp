@@ -1,6 +1,6 @@
 #include <set>
 #include <unordered_map>
-#include<random>
+#include <random>
 //#include <iostream>
 
 #include "Hangman.h"

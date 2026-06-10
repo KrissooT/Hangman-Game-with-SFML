@@ -33,9 +33,11 @@ void Game::ProcessEvents() {
 		char letter;
 		if (input_.HandleEvent(*event, letter)) {
 			//TODO
+
 			if (state_ == GameState::Playing) {
 				hangman_.GuessLetter(letter);
 				state_ = hangman_.CheckLives();
+				audioManager_.PlayKeyPress();
 			}
 		}
 	}
@@ -72,6 +74,9 @@ void Game::Update() {
 
 
 	if (input_.IsLeftMouseClicked()) {
+
+		audioManager_.PlayMouseClick();
+
 		if (state_ == GameState::MainMenu) {
 			GameState nextState = MainMenu.HandleClick(input_.GetMousePos());
 			if (nextState == GameState::Exit) {
