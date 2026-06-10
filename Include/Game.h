@@ -10,6 +10,7 @@
 #include "PlayScreen.h"
 #include "PlayAgainMenu.h"
 #include "DrawHangman.h"
+#include "Cursor.h"
 
 class Game {
 
@@ -24,6 +25,7 @@ class Game {
 		PlayScreen PlayScreen;
 		PlayAgainMenu PlayAgainMenu;
 		DrawHangman drawHangman_;
+		Cursor cursor_;
 
 	public:
 		Game();

@@ -12,9 +12,12 @@ Game::Game() :
 	difficulty_(Difficulty::None)
 {
 	window_.setIcon(sf::Image("Content/Textures/IconTest.png"));
-	window_.setMinimumSize(window_.getSize() / 2u);
+	window_.setMinimumSize(window_.getSize());
+	window_.setMaximumSize(window_.getSize());
 
 	window_.setKeyRepeatEnabled(false);
+	window_.setMouseCursorVisible(false);
+
 }
 
 bool Game::IsRunning()const {
@@ -39,6 +42,9 @@ void Game::ProcessEvents() {
 }
 
 void Game::Update() {
+
+	cursor_.Update(window_);
+
 	input_.Update(window_);
 
 	switch (state_) {
@@ -115,6 +121,8 @@ void Game::Render() {
 		PlayAgainMenu.Draw(window_, state_, hangman_.GetSecretWord());
 		break;
 	}
+
+	cursor_.Draw(window_);
 
 	window_.display();
 }
