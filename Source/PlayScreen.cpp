@@ -5,7 +5,8 @@ PlayScreen::PlayScreen() :
 	word_(font_),
 	lives_(font_),
 	backgroundTex_("Content/Textures/PlayScreenBackground.png"),
-	backgroundSpr_(backgroundTex_)
+	backgroundSpr_(backgroundTex_),
+	keyboard_(font_)
 {
 	//Lives
 	lives_.setCharacterSize(50);
@@ -21,16 +22,15 @@ PlayScreen::PlayScreen() :
 void PlayScreen::DrawKeyboard(sf::RenderWindow& window, const Hangman& hangman) {
 	for (char c = 'A'; c <= 'Z'; ++c) {
 
-		sf::Text text(font_);
-		text.setString(std::string(1, c));
-		text.setCharacterSize(40);
-		text.setOutlineThickness(5);
+		keyboard_.setString(std::string(1, c));
+		keyboard_.setCharacterSize(40);
+		keyboard_.setOutlineThickness(5);
 
 		if (hangman.GetGuessedLetters().contains(c)) {
-			text.setFillColor(sf::Color::Red);
+			keyboard_.setFillColor(sf::Color::Red);
 		}
 		else {
-			text.setFillColor(sf::Color::White);
+			keyboard_.setFillColor(sf::Color::White);
 		}
 
 		int index = c - 'A';
@@ -39,12 +39,12 @@ void PlayScreen::DrawKeyboard(sf::RenderWindow& window, const Hangman& hangman) 
 		int row = index / cols;
 		int col = index % cols;
 
-		text.setPosition({
+		keyboard_.setPosition({
 			100.f + col * 65.f,
 			650.f + row * 65.f
 			});
 
-		window.draw(text);
+		window.draw(keyboard_);
 	}
 }
 

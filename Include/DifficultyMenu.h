@@ -18,6 +18,9 @@ class DifficultyMenu {
 		sf::Text ExtremeButton;
 		sf::Text BackButton;
 
+		sf::Texture backgroundTex_;
+		sf::Sprite backgroundSpr_;
+
 	public:
 
 		DifficultyMenu();

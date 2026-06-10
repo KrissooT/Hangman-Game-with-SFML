@@ -21,6 +21,8 @@ class PlayScreen {
 		sf::Texture backgroundTex_;
 		sf::Sprite backgroundSpr_;
 
+		sf::Text keyboard_;
+
 	public:
 
 		PlayScreen();
