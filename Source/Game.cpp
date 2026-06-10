@@ -60,6 +60,17 @@ void Game::Update() {
 		break;
 	}
 
+	if (state_ == GameState::MainMenu ||
+		state_ == GameState::DifficultyMenu ||
+		state_ == GameState::Options)
+	{
+		audioManager_.PlayMenuMusic();
+	}
+	if (state_ == GameState::Playing) {
+		audioManager_.PlayGameMusic();
+	}
+
+
 	if (input_.IsLeftMouseClicked()) {
 		if (state_ == GameState::MainMenu) {
 			GameState nextState = MainMenu.HandleClick(input_.GetMousePos());

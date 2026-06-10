@@ -11,6 +11,8 @@
 #include "PlayAgainMenu.h"
 #include "DrawHangman.h"
 #include "Cursor.h"
+#include "AudioManager.h"
+#include "MusicState.h"
 
 class Game {
 
@@ -26,6 +28,8 @@ class Game {
 		PlayAgainMenu PlayAgainMenu;
 		DrawHangman drawHangman_;
 		Cursor cursor_;
+		AudioManager audioManager_;
+		MusicState musicState_;
 
 	public:
 		Game();
