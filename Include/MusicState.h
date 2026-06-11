@@ -3,5 +3,7 @@
 enum class MusicState {
 	None,
 	Menu,
-	Game
+	Game,
+	Win,
+	Lose
 };

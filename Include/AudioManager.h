@@ -13,6 +13,8 @@ class AudioManager {
 
 		void PlayMenuMusic();
 		void PlayGameMusic();
+		void PlayWinMusic();
+		void PlayLoseMusic();
 		void StopMusic();
 
 		MusicState GetMusicState()const;

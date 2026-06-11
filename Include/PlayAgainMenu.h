@@ -16,11 +16,17 @@ class PlayAgainMenu {
 		sf::Text playAgainButton;
 		sf::Text exitButton;
 
+		sf::Texture WinBackgroundTex_;
+		sf::Sprite WinBackgroundSpr_;
+
+		sf::Texture LoseBackgroundTex_;
+		sf::Sprite LoseBackgroundSpr_;
+
 	public:
 
 		PlayAgainMenu();
 
-		GameState HandleClick(const sf::Vector2f& mousePos)const;
+		GameState HandleClick(const sf::Vector2f& mousePos, GameState state)const;
 
 		void UpdateHover(const sf::Vector2f& mousePos);
 

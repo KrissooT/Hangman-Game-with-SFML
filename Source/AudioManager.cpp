@@ -27,10 +27,40 @@ void AudioManager::PlayGameMusic() {
 
 	music_.stop();
 	music_.openFromFile("Content/Audio/GameMusic.mp3");
+	music_.setPlayingOffset(sf::seconds(1));
 	music_.setLooping(true);
 	music_.play();
 
 	musicState_ = MusicState::Game;
+}
+
+void AudioManager::PlayWinMusic() {
+
+	if (musicState_ == MusicState::Win) {
+		return;
+	}
+
+	music_.stop();
+	music_.openFromFile("Content/Audio/WinMusic.mp3");
+	music_.setLooping(true);
+	music_.play();
+
+	musicState_ = MusicState::Win;
+}
+
+void AudioManager::PlayLoseMusic() {
+
+	if (musicState_ == MusicState::Lose) {
+		return;
+	}
+
+	music_.stop();
+	music_.openFromFile("Content/Audio/LoseMusic.mp3");
+	music_.setPlayingOffset(sf::seconds(3));
+	music_.setLooping(true);
+	music_.play();
+
+	musicState_ = MusicState::Lose;
 }
 
 void AudioManager::StopMusic() {

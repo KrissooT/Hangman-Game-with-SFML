@@ -62,16 +62,22 @@ void Game::Update() {
 		break;
 	}
 
-	if (state_ == GameState::MainMenu ||
-		state_ == GameState::DifficultyMenu ||
-		state_ == GameState::Options)
-	{
+	switch (state_) {
+	case GameState::MainMenu:
+	case GameState::DifficultyMenu:
+	case GameState::Options:
 		audioManager_.PlayMenuMusic();
-	}
-	if (state_ == GameState::Playing) {
+		break;
+	case GameState::Playing:
 		audioManager_.PlayGameMusic();
+		break;
+	case GameState::Won:
+		audioManager_.PlayWinMusic();
+		break;
+	case GameState::Lost:
+		audioManager_.PlayLoseMusic();
+		break;
 	}
-
 
 	if (input_.IsLeftMouseClicked()) {
 
@@ -103,7 +109,7 @@ void Game::Update() {
 			}
 		}
 		if (state_ == GameState::Won || state_ == GameState::Lost) {
-			GameState nextState = PlayAgainMenu.HandleClick(input_.GetMousePos());
+			GameState nextState = PlayAgainMenu.HandleClick(input_.GetMousePos(), state_);
 			if (nextState == GameState::Exit) {
 				window_.close();
 			}
