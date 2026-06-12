@@ -7,8 +7,12 @@
 struct GameConfig {
 	std::string windowTitle;
 	sf::Vector2f windowSize;
+	float musicVolume;
+	float soundVolume;
+	bool musicMute;
+	bool soundMute;
 
 	GameConfig();
 };
 
-inline const GameConfig gConfig;
+inline GameConfig gConfig;

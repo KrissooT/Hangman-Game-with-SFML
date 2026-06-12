@@ -12,4 +12,8 @@ GameConfig::GameConfig() {
 	windowTitle = json["windowTitle"];
 	windowSize.x = json["windowSize"][0];
 	windowSize.y = json["windowSize"][1];
+	musicVolume = json["musicVolume"];
+	soundVolume = json["soundVolume"];
+	musicMute = json["musicMute"];
+	soundMute = json["soundMute"];
 }

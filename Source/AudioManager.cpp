@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "AudioManager.h"
 
 AudioManager::AudioManager() : 
@@ -69,6 +71,32 @@ void AudioManager::StopMusic() {
 
 MusicState AudioManager::GetMusicState()const {
 	return musicState_;
+}
+
+void AudioManager::SetMusicVolume(float value) {
+	gConfig.musicVolume = std::clamp(value, 0.f, 100.f);
+}
+
+void AudioManager::SetSoundVolume(float value) {
+	gConfig.soundVolume = std::clamp(value, 0.f, 100.f);
+}
+
+void AudioManager::ToggleMusicMute() {
+	gConfig.musicMute = !gConfig.musicMute;
+	UpdateVolume();
+}
+
+void AudioManager::ToggleSoundMute() {
+	gConfig.soundMute = !gConfig.soundMute;
+	UpdateVolume();
+}
+
+void AudioManager::UpdateVolume() {
+	music_.setVolume(gConfig.musicMute ? 0.f : gConfig.musicVolume);
+
+	float soundVolume = gConfig.soundMute ? 0.f : gConfig.soundVolume;
+	kSound_.setVolume(soundVolume);
+	mSound_.setVolume(soundVolume);
 }
 
 void AudioManager::PlayMouseClick() {

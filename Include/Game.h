@@ -2,17 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 #include "Input.h"
-#include "GameState.h"
 #include "MainMenu.h"
 #include "DifficultyMenu.h"
-#include "Difficulty.h"
 #include "Hangman.h"
 #include "PlayScreen.h"
 #include "PlayAgainMenu.h"
 #include "DrawHangman.h"
 #include "Cursor.h"
 #include "AudioManager.h"
-#include "MusicState.h"
+#include "OptionsMenu.h"
 
 class Game {
 
@@ -30,6 +28,7 @@ class Game {
 		Cursor cursor_;
 		AudioManager audioManager_;
 		MusicState musicState_;
+		OptionsMenu OptionsMenu;
 
 	public:
 		Game();

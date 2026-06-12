@@ -56,6 +56,9 @@ void Game::Update() {
 	case GameState::DifficultyMenu:
 		DifficultyMenu.UpdateHover(input_.GetMousePos());
 		break;
+	case GameState::Options:
+		OptionsMenu.UpdateHover(input_.GetMousePos());
+		break;
 	case GameState::Won:
 	case GameState::Lost:
 		PlayAgainMenu.UpdateHover(input_.GetMousePos());
@@ -108,6 +111,49 @@ void Game::Update() {
 				hangman_.Run(difficulty_);
 			}
 		}
+
+		if (state_ == GameState::Options) {
+			OptionsActions action = OptionsMenu.HandleClick(input_.GetMousePos());
+
+			switch (action) {
+			case OptionsActions::MusicUp:
+				gConfig.musicMute = false;
+				audioManager_.SetMusicVolume(gConfig.musicVolume + 10);
+				break;
+			case OptionsActions::MusicDown:
+				gConfig.musicMute = false;
+				audioManager_.SetMusicVolume(gConfig.musicVolume - 10);
+				break;
+			case OptionsActions::SoundUp:
+				gConfig.soundMute = false;
+				audioManager_.SetSoundVolume(gConfig.soundVolume + 10);
+				break;
+			case OptionsActions::SoundDown:
+				gConfig.soundMute = false;
+				audioManager_.SetSoundVolume(gConfig.soundVolume - 10);
+				break;
+			case OptionsActions::MusicMute:
+				audioManager_.ToggleMusicMute();
+				break;
+			case OptionsActions::SoundMute:
+				audioManager_.ToggleSoundMute();
+				break;
+			case OptionsActions::None:
+				break;
+			}
+
+			audioManager_.UpdateVolume();
+			OptionsMenu.UpdateVolumeText();
+			OptionsMenu.UpdateMuteBox();
+
+			GameState backState = OptionsMenu.Back(input_.GetMousePos());
+			if (backState == GameState::MainMenu) {
+				state_ = backState;
+				return;
+			}
+
+		}
+
 		if (state_ == GameState::Won || state_ == GameState::Lost) {
 			GameState nextState = PlayAgainMenu.HandleClick(input_.GetMousePos(), state_);
 			if (nextState == GameState::Exit) {
@@ -131,8 +177,7 @@ void Game::Render() {
 		DifficultyMenu.Draw(window_);
 		break;
 	case GameState::Options:
-		//Just for now TODO!
-		window_.clear(sf::Color::Blue);
+		OptionsMenu.Draw(window_);
 		break;
 	case GameState::Playing:
 		PlayScreen.Draw(window_, hangman_);

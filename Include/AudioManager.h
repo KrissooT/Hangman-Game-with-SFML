@@ -3,11 +3,13 @@
 #include <SFML/Audio.hpp>
 
 #include "MusicState.h"
+#include "GameConfig.h"
 
 class AudioManager {
 	private:
 		MusicState musicState_ = MusicState::None;
 		sf::Music music_;
+
 	public:
 		AudioManager();
 
@@ -18,6 +20,14 @@ class AudioManager {
 		void StopMusic();
 
 		MusicState GetMusicState()const;
+
+		void SetMusicVolume(float value);
+		void SetSoundVolume(float value);
+
+		void ToggleMusicMute();
+		void ToggleSoundMute();
+
+		void UpdateVolume();
 
 	private:
 		//Mouse
