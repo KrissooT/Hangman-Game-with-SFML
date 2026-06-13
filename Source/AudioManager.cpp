@@ -65,8 +65,12 @@ void AudioManager::PlayLoseMusic() {
 	musicState_ = MusicState::Lose;
 }
 
-void AudioManager::StopMusic() {
-	music_.stop();
+void AudioManager::PauseMusic() {
+	music_.pause();
+}
+
+void AudioManager::ResumeMusic() {
+	music_.play();
 }
 
 MusicState AudioManager::GetMusicState()const {

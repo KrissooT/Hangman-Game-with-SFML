@@ -11,6 +11,7 @@
 #include "Cursor.h"
 #include "AudioManager.h"
 #include "OptionsMenu.h"
+#include "PauseMenu.h"
 
 class Game {
 
@@ -29,6 +30,7 @@ class Game {
 		AudioManager audioManager_;
 		MusicState musicState_;
 		OptionsMenu OptionsMenu;
+		PauseMenu PauseMenu;
 
 	public:
 		Game();

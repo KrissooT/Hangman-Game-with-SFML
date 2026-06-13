@@ -17,7 +17,8 @@ class AudioManager {
 		void PlayGameMusic();
 		void PlayWinMusic();
 		void PlayLoseMusic();
-		void StopMusic();
+		void PauseMusic();
+		void ResumeMusic();
 
 		MusicState GetMusicState()const;
 

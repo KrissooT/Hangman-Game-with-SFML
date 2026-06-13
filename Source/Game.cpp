@@ -30,6 +30,20 @@ void Game::ProcessEvents() {
 		if (event->is<sf::Event::Closed>()) {
 			window_.close();
 		}
+
+		if (const sf::Event::KeyPressed* key = event->getIf<sf::Event::KeyPressed>()) {
+			if (key->code == sf::Keyboard::Key::Escape) {
+				if (state_ == GameState::Playing) {
+					state_ = GameState::Paused;
+					audioManager_.PauseMusic();
+				}
+				else if (state_ == GameState::Paused) {
+					state_ = GameState::Playing;
+					audioManager_.ResumeMusic();
+				}
+			}
+		}
+
 		char letter;
 		if (input_.HandleEvent(*event, letter)) {
 			//TODO
@@ -58,6 +72,9 @@ void Game::Update() {
 		break;
 	case GameState::Options:
 		OptionsMenu.UpdateHover(input_.GetMousePos());
+		break;
+	case GameState::Paused:
+		PauseMenu.UpdateHover(input_.GetMousePos());
 		break;
 	case GameState::Won:
 	case GameState::Lost:
@@ -163,6 +180,21 @@ void Game::Update() {
 				state_ = nextState;
 			}
 		}
+
+		if (state_ == GameState::Paused) {
+			GameState nextState = PauseMenu.HandleClick(input_.GetMousePos());
+			if (nextState == GameState::Exit) {
+				window_.close();
+			}
+			else if (nextState == GameState::Playing) {
+				state_ = GameState::Playing;
+				audioManager_.ResumeMusic();
+			}
+			else if (nextState == GameState::MainMenu) {
+				state_ = GameState::MainMenu;
+				audioManager_.PlayMenuMusic();
+			}
+		}
 	}
 }
 
@@ -182,6 +214,11 @@ void Game::Render() {
 	case GameState::Playing:
 		PlayScreen.Draw(window_, hangman_);
 		drawHangman_.Draw(window_, hangman_.GetLives());
+		break;
+	case GameState::Paused:
+		PlayScreen.Draw(window_, hangman_);
+		drawHangman_.Draw(window_, hangman_.GetLives());
+		PauseMenu.Draw(window_);
 		break;
 	case GameState::Won:
 	case GameState::Lost:
