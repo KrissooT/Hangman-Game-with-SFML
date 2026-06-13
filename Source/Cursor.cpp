@@ -1,7 +1,7 @@
 #include "Cursor.h"
 
 Cursor::Cursor() :
-	cursorTex_("Content/Textures/Cursor.png"),
+	cursorTex_("Content/Assets/Cursor.png"),
 	cursorSpr_(cursorTex_)
 {
 	cursorSpr_.setOrigin({ 250.f, 180.f });

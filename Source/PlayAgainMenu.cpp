@@ -1,9 +1,9 @@
 #include "PlayAgainMenu.h"
 
 PlayAgainMenu::PlayAgainMenu() :
-	WinBackgroundTex_("Content/Textures/WinScreen.png"),
+	WinBackgroundTex_("Content/Assets/Backgrounds/WinScreenBackground.png"),
 	WinBackgroundSpr_(WinBackgroundTex_),
-	LoseBackgroundTex_("Content/Textures/LoseScreen.png"),
+	LoseBackgroundTex_("Content/Assets/Backgrounds/LoseScreenBackground.png"),
 	LoseBackgroundSpr_(LoseBackgroundTex_),
 	font_("Content/Fonts/PlayAgainFont.ttf"),
 	playAgainButton(font_),

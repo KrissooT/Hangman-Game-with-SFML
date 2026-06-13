@@ -2,14 +2,13 @@
 
 PauseMenu::PauseMenu() :
 	font_("Content/Fonts/PlayAgainFont.ttf"),
-	//frameTex_("Content/Textures/PauseMenu.png"),
 	paused_(font_),
 	resume_(font_),
 	mainMenu_(font_),
 	exit_(font_)
 {
 
-	frameTex_.loadFromFile("Content/Textures/33.png");
+	frameTex_.loadFromFile("Content/Assets/Backgrounds/PauseMenuBackground.png");
 
 	//Paused
 	paused_.setString("Paused");
@@ -17,7 +16,7 @@ PauseMenu::PauseMenu() :
 	paused_.setOutlineThickness(3);
 
 	paused_.setOrigin(paused_.getGlobalBounds().getCenter());
-	paused_.setPosition({ gConfig.windowSize.x / 2, 230 });
+	paused_.setPosition({ gConfig.windowSize.x / 2, 235 });
 
 	//Resume Button
 	resume_.setString("Resume");
@@ -25,7 +24,7 @@ PauseMenu::PauseMenu() :
 	resume_.setOutlineThickness(3);
 
 	resume_.setOrigin(resume_.getGlobalBounds().getCenter());
-	resume_.setPosition({gConfig.windowSize.x / 2, 337});
+	resume_.setPosition({gConfig.windowSize.x / 2, 347});
 
 	//Main Menu Button
 	mainMenu_.setString("Main Menu");
@@ -33,7 +32,7 @@ PauseMenu::PauseMenu() :
 	mainMenu_.setOutlineThickness(3);
 
 	mainMenu_.setOrigin(mainMenu_.getGlobalBounds().getCenter());
-	mainMenu_.setPosition({ gConfig.windowSize.x / 2, 408 });
+	mainMenu_.setPosition({ gConfig.windowSize.x / 2, 425 });
 
 	//Exit
 	exit_.setString("Quit Game");
@@ -41,7 +40,7 @@ PauseMenu::PauseMenu() :
 	exit_.setOutlineThickness(3);
 
 	exit_.setOrigin(exit_.getGlobalBounds().getCenter());
-	exit_.setPosition({ gConfig.windowSize.x / 2, 485 });
+	exit_.setPosition({ gConfig.windowSize.x / 2, 510 });
 
 	//Frame
 	frame_.setTexture(&frameTex_);

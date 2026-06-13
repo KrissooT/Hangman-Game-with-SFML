@@ -4,7 +4,7 @@ PlayScreen::PlayScreen() :
 	font_("Content/Fonts/KeyboardAndWordFont.ttf"),
 	word_(font_),
 	lives_(font_),
-	backgroundTex_("Content/Textures/PlayScreenBackground.png"),
+	backgroundTex_("Content/Assets/Backgrounds/PlayscreenBackground.png"),
 	backgroundSpr_(backgroundTex_),
 	keyboard_(font_)
 {

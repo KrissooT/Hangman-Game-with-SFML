@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 
 MainMenu::MainMenu():
-	backgroundTex_("Content/Textures/MainMenuBackground.png"),
+	backgroundTex_("Content/Assets/Backgrounds/MainMenuBackground.png"),
 	font_("Content/Fonts/MenuFont.ttf"),
 	backgroundSpr_(backgroundTex_),
 	Title(font_),

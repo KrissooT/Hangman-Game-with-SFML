@@ -11,7 +11,7 @@ Game::Game() :
 	state_(GameState::MainMenu),
 	difficulty_(Difficulty::None)
 {
-	window_.setIcon(sf::Image("Content/Textures/IconTest.png"));
+	window_.setIcon(sf::Image("Content/Assets/Icon.png"));
 	window_.setMinimumSize(window_.getSize());
 	window_.setMaximumSize(window_.getSize());
 

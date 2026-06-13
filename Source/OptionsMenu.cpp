@@ -2,7 +2,7 @@
 #include "AudioManager.h"
 
 OptionsMenu::OptionsMenu() :
-	backgroundTex_("Content/Textures/OptionsMenuBackground.png"),
+	backgroundTex_("Content/Assets/Backgrounds/OptionsMenuBackground.png"),
 	backgroundSpr_(backgroundTex_),
 	font_("Content/Fonts/MenuFont.ttf"),
 	optionsText_(font_),

@@ -1,12 +1,10 @@
 #include <set>
 #include <unordered_map>
 #include <random>
-//#include <iostream>
 
 #include "Hangman.h"
 
 bool Hangman::GuessLetter(char letter) {
-	//std::cout << "Guessing: " << letter << "\n"; For testing
 	if (guessedLetters.count(letter) != 0) {
 		return false;
 	}
@@ -123,9 +121,6 @@ void Hangman::Run(Difficulty difficulty) {
 			maskedWord[i] = '_';
 		}
 	}
-
-	//std::cout << secretWord << "\n";  //Just for testing
-	//std::cout << maskedWord;
 }
 
 GameState Hangman::CheckLives() {

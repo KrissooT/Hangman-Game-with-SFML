@@ -1,7 +1,7 @@
 #include "DifficultyMenu.h"
 
 DifficultyMenu::DifficultyMenu() :
-	backgroundTex_("Content/Textures/DifficultyMenuBackground.png"),
+	backgroundTex_("Content/Assets/Backgrounds/DifficultyMenuBackground.png"),
 	backgroundSpr_(backgroundTex_),
 	font_("Content/Fonts/MenuFont.ttf"),
 	ChooseDifficultyText(font_),
