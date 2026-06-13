@@ -61,6 +61,7 @@ GameState MainMenu::HandleClick(const sf::Vector2f& MousePos)
 	if (ExitButton.getGlobalBounds().contains(MousePos)) {
 		return GameState::Exit;
 	}
+	return GameState::MainMenu;
 }
 
 void MainMenu::UpdateHover(const sf::Vector2f& MousePos) {

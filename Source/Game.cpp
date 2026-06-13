@@ -220,11 +220,14 @@ void Game::Render() {
 	case GameState::Paused:
 		PlayScreen.Draw(window_, hangman_);
 		drawHangman_.Draw(window_, hangman_.GetLives());
-		PauseMenu.Draw(window_);
+		PauseMenu.Draw(window_);	
 		break;
 	case GameState::Won:
 	case GameState::Lost:
 		PlayAgainMenu.Draw(window_, state_, hangman_.GetSecretWord());
+		break;
+	default:
+		state_ = GameState::MainMenu;
 		break;
 	}
 

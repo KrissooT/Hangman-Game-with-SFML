@@ -87,7 +87,7 @@ Difficulty DifficultyMenu::HandleClick(const sf::Vector2f& MousePos)
 	if (ExtremeButton.getGlobalBounds().contains(MousePos)) {
 		return Difficulty::Extreme;
 	}
-
+	return Difficulty::None;
 }
 
 GameState DifficultyMenu::Back(const sf::Vector2f& MousePos) {
