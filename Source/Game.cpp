@@ -18,6 +18,7 @@ Game::Game() :
 	window_.setKeyRepeatEnabled(false);
 	window_.setMouseCursorVisible(false);
 
+	audioManager_.UpdateVolume();
 }
 
 bool Game::IsRunning()const {
@@ -162,6 +163,7 @@ void Game::Update() {
 			audioManager_.UpdateVolume();
 			OptionsMenu.UpdateVolumeText();
 			OptionsMenu.UpdateMuteBox();
+			gConfig.Save();
 
 			GameState backState = OptionsMenu.Back(input_.GetMousePos());
 			if (backState == GameState::MainMenu) {

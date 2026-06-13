@@ -17,6 +17,7 @@ void AudioManager::PlayMenuMusic() {
 
 	music_.openFromFile("Content/Audio/MainMenuMusic.mp3");
 	music_.setLooping(true);
+	UpdateVolume();
 	music_.play();
 
 	musicState_ = MusicState::Menu;
@@ -31,6 +32,7 @@ void AudioManager::PlayGameMusic() {
 	music_.openFromFile("Content/Audio/GameMusic.mp3");
 	music_.setPlayingOffset(sf::seconds(1));
 	music_.setLooping(true);
+	UpdateVolume();
 	music_.play();
 
 	musicState_ = MusicState::Game;
@@ -45,6 +47,7 @@ void AudioManager::PlayWinMusic() {
 	music_.stop();
 	music_.openFromFile("Content/Audio/WinMusic.mp3");
 	music_.setLooping(true);
+	UpdateVolume();
 	music_.play();
 
 	musicState_ = MusicState::Win;
@@ -60,6 +63,7 @@ void AudioManager::PlayLoseMusic() {
 	music_.openFromFile("Content/Audio/LoseMusic.mp3");
 	music_.setPlayingOffset(sf::seconds(3));
 	music_.setLooping(true);
+	UpdateVolume();
 	music_.play();
 
 	musicState_ = MusicState::Lose;

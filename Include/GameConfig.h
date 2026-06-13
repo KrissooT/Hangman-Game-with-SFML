@@ -13,6 +13,8 @@ struct GameConfig {
 	bool soundMute;
 
 	GameConfig();
+
+	void Save()const;
 };
 
 inline GameConfig gConfig;

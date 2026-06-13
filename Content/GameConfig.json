@@ -1,8 +1,11 @@
 {
-  "windowTitle": "Hangman",
-  "windowSize": [ 1000, 800 ],
-  "musicVolume": 100,
-  "soundVolume": 100,
-  "musicMute": false,
-  "soundMute":  false
+    "musicMute": false,
+    "musicVolume": 100.0,
+    "soundMute": false,
+    "soundVolume": 100.0,
+    "windowSize": [
+        1000.0,
+        800.0
+    ],
+    "windowTitle": "Hangman"
 }

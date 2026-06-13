@@ -17,3 +17,20 @@ GameConfig::GameConfig() {
 	musicMute = json["musicMute"];
 	soundMute = json["soundMute"];
 }
+
+void GameConfig::Save()const {
+	nlohmann::json json;
+
+	json["windowTitle"] = windowTitle;
+	json["windowSize"][0] = windowSize.x;
+	json["windowSize"][1] = windowSize.y;
+	json["musicVolume"] = musicVolume;
+	json["soundVolume"] = soundVolume;
+	json["musicMute"] = musicMute;
+	json["soundMute"] = soundMute;
+
+	std::ofstream file("Content/GameConfig.json");
+	assert(file);
+
+	file << json.dump(4);
+}
